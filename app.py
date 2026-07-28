@@ -109,26 +109,7 @@ return render_template(
     walking=walking
 )
 
-    probability = float(prediction[0][0])
 
-    if probability > 0.5:
-        result = "🦠 Lumpy Skin Disease Detected"
-        confidence = probability * 100
-    else:
-        result = "✅ Healthy Cow"
-        confidence = (1 - probability) * 100
-
-    return render_template(
-    "result.html",
-    result=result,
-    confidence=round(confidence, 2),
-    image=filename,
-    fever_days=fever_days,
-    skin_nodules=skin_nodules,
-    lymph_nodes=lymph_nodes,
-    appetite=appetite,
-    walking=walking
-)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
