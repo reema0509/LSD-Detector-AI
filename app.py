@@ -93,9 +93,21 @@ def predict():
     img_array = np.expand_dims(img_array, axis=0)
     img_array = img_array / 255.0
 
-    # Prediction
-    model = get_model()
-    prediction = model.predict(img_array)
+    # Temporary test
+result = "Test Successful"
+confidence = 100
+
+return render_template(
+    "result.html",
+    result=result,
+    confidence=confidence,
+    image=filename,
+    fever_days=fever_days,
+    skin_nodules=skin_nodules,
+    lymph_nodes=lymph_nodes,
+    appetite=appetite,
+    walking=walking
+)
 
     probability = float(prediction[0][0])
 
