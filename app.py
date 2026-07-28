@@ -33,7 +33,7 @@ app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 # Create uploads folder if it doesn't exist
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
-
+    
 
 @app.route("/")
 def home():
@@ -109,7 +109,11 @@ def predict():
         appetite=appetite,
         walking=walking
     )
+from flask import send_from_directory
 
+@app.route("/sitemap.xml")
+def sitemap():
+    return send_from_directory("static", "sitemap.xml")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
