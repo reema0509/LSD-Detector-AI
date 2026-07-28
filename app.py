@@ -12,9 +12,13 @@ app = Flask(__name__)
 # Load trained model
 model = None
 
+import os
 from pathlib import Path
 
-MODEL_PATH = Path(__file__).parent / "lsd_model.keras"
+BASE_DIR = Path(__file__).resolve().parent
+MODEL_PATH = BASE_DIR / "lsd_model.keras"
+
+model = None
 
 def get_model():
     global model
