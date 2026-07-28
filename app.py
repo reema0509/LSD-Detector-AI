@@ -12,10 +12,14 @@ app = Flask(__name__)
 # Load trained model
 model = None
 
+from pathlib import Path
+
+MODEL_PATH = Path(__file__).parent / "lsd_model.keras"
+
 def get_model():
     global model
     if model is None:
-        model = tf.keras.models.load_model("lsd_model.keras")
+        model = tf.keras.models.load_model(MODEL_PATH)
     return model
 
 # Upload folder
