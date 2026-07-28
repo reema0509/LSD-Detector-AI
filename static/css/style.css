@@ -1,0 +1,233 @@
+
+html{
+    scroll-behavior:smooth;
+}
+/* ================= BODY ================= */
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background:#f8f9fa;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    padding:90px 0;
+    background:linear-gradient(to right,#ffffff,#eafaf1);
+}
+
+.hero-image{
+    max-height:430px;
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-15px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+
+}
+.hero-image{
+    width:100%;
+    max-width:450px;
+    height:auto;
+}
+
+
+
+/* ================= NAVBAR ================= */
+
+.navbar-brand{
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+.nav-link{
+    font-size:18px;
+    font-weight:600;
+    margin-left:15px;
+    transition:.3s;
+}
+
+.nav-link:hover{
+    color:#FFD54F !important;
+    transform:translateY(-2px);
+}
+
+/* ================= BUTTON ================= */
+
+.btn{
+    border-radius:30px;
+    padding:10px 25px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    margin-top:50px;
+}
+.custom-navbar{
+    background:rgba(34,139,34,.95);
+    backdrop-filter:blur(10px);
+    transition:.4s;
+}
+
+.btn-success{
+    transition:.4s;
+}
+
+.btn-success:hover{
+    transform:scale(1.05);
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+/* ================= FEATURE CARDS ================= */
+
+.card{
+    border-radius:20px;
+    transition:all .4s ease;
+    overflow:hidden;
+}
+
+.card:hover{
+    transform:translateY(-12px);
+    box-shadow:0 20px 40px rgba(0,0,0,.2);
+    border:2px solid #2E7D32;
+}
+
+.card i{
+    transition:.4s;
+}
+
+.card:hover i{
+    transform:scale(1.2) rotate(8deg);
+}
+
+.card h4{
+    font-weight:700;
+}
+
+.card p{
+    color:#555;
+}
+/* Loading Animation */
+
+.spinner-border{
+    width:1.2rem;
+    height:1.2rem;
+}
+/* ================= BUTTON HOVER ================= */
+
+.btn-outline-success{
+    transition:.3s;
+}
+
+.btn-outline-success:hover{
+    transform:scale(1.05);
+}
+
+/* ================= SCROLLBAR ================= */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#f1f1f1;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#2E7D32;
+    border-radius:10px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#1B5E20;
+}
+
+/* ================= IMAGE ANIMATION ================= */
+
+.hero-image{
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-12px);
+}
+
+100%{
+transform:translateY(0);
+}
+
+}
+.result-card{
+    animation:fadeUp .8s ease;
+}
+
+@keyframes fadeUp{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+#how-it-works .card{
+    min-height:250px;
+}
+@media (max-width:768px){
+
+    .hero{
+        text-align:center;
+        padding:50px 0;
+    }
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .hero p{
+        font-size:1rem;
+    }
+
+    .hero-image{
+        margin-top:30px;
+        max-width:300px;
+    }
+
+    .card{
+        margin-bottom:20px;
+    }
+
+    .navbar-brand{
+        font-size:1.2rem;
+    }
+
+    .detect-btn{
+        width:100%;
+    }
+
+    footer{
+        text-align:center;
+    }
+
+}

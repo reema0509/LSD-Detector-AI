@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Diagnosis Result</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<style>
+
+body{
+
+background:#f4f7fa;
+
+font-family:Arial,Helvetica,sans-serif;
+
+}
+
+.result-card{
+
+background:white;
+
+border-radius:20px;
+
+padding:35px;
+
+box-shadow:0 15px 35px rgba(0,0,0,.15);
+
+}
+
+.result-image{
+
+width:100%;
+
+border-radius:15px;
+
+}
+
+.progress{
+
+height:25px;
+
+border-radius:30px;
+
+}
+
+.btn{
+
+border-radius:40px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container py-5">
+
+<div class="row justify-content-center">
+
+<div class="col-lg-8">
+
+<div class="result-card">
+
+<h2 class="text-center text-success fw-bold">
+
+🤖 AI Diagnosis Report
+
+</h2>
+
+<hr>
+<div class="text-center mb-3">
+
+<span class="badge bg-success fs-6">
+AI Analysis Completed Successfully
+</span>
+
+</div>
+<img
+src="{{ url_for('uploaded_file', filename=image) }}"
+class="result-image">
+
+<br><br>
+
+{% if "Healthy" in result %}
+
+<h3 class="text-center text-success fw-bold">
+🟢 {{ result }}
+</h3>
+
+{% else %}
+
+<h3 class="text-center text-danger fw-bold">
+🔴 {{ result }}
+</h3>
+
+{% endif %}
+
+<h5 class="text-center text-muted">
+
+Confidence : {{ confidence }}%
+
+</h5>
+
+<div class="progress mt-4">
+
+<div
+class="progress-bar {% if 'Healthy' in result %}bg-success{% else %}bg-danger{% endif %}"
+
+style="width:{{ confidence }}%;">
+
+{{ confidence }}%
+
+</div>
+
+</div>
+
+<hr>
+
+<h4 class="text-success">
+
+🩺 Symptoms Summary
+
+</h4>
+
+<ul class="list-group">
+
+<li class="list-group-item">
+🌡 Fever :
+<strong>{{ fever_days }}</strong>
+</li>
+
+<li class="list-group-item">
+🔴 Skin Nodules :
+<strong>{{ skin_nodules }}</strong>
+</li>
+
+<li class="list-group-item">
+🟣 Swollen Lymph Nodes :
+<strong>{{ lymph_nodes }}</strong>
+</li>
+
+<li class="list-group-item">
+🍽 Appetite :
+<strong>{{ appetite }}</strong>
+</li>
+
+<li class="list-group-item">
+🚶 Walking :
+<strong>{{ walking }}</strong>
+</li>
+
+</ul>
+<hr>
+
+<div class="alert alert-warning mt-4">
+
+<h4>💊 AI Recommendation</h4>
+
+{% if "Healthy" in result %}
+
+<p class="mb-0">
+✅ The cattle appears healthy.<br>
+✔ Continue regular monitoring.<br>
+✔ Maintain proper hygiene and vaccination schedule.
+</p>
+
+{% else %}
+
+<p class="mb-0">
+⚠️ Lumpy Skin Disease symptoms detected.<br>
+✔ Isolate the animal immediately.<br>
+✔ Contact a qualified veterinarian.<br>
+✔ Monitor nearby cattle for similar symptoms.<br>
+✔ Follow vaccination and biosecurity measures.
+</p>
+
+{% endif %}
+
+</div>
+
+<div class="d-grid gap-3 mt-4">
+
+<a href="/detect" class="btn btn-success btn-lg">
+
+<i class="bi bi-arrow-repeat"></i>
+
+Detect Another Image
+
+</a>
+
+<a href="/" class="btn btn-outline-success btn-lg">
+
+<i class="bi bi-house-fill"></i>
+
+Back to Home
+
+</a>
+
+<button onclick="window.print()" class="btn btn-dark btn-lg">
+
+<i class="bi bi-printer-fill"></i>
+
+Print Report
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<footer class="text-center mt-5 mb-3 text-muted">
+
+<hr>
+
+Version 1.0 | LSD Detector AI | Powered by TensorFlow + Flask
+
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

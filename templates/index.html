@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lumpy Skin Disease Detection</title>
+<link rel="icon"
+href="{{ url_for('static', filename='images/favicon.png') }}">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/png"
+href="{{ url_for('static', filename='images/logo.png') }}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+AOS.init({
+    duration:1000,
+    once:true
+});
+</script>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-lg custom-navbar">
+
+<div class="container">
+
+<a class="navbar-brand fw-bold text-white" href="#">
+    <img src="{{ url_for('static', filename='images/logo.png') }}" width="45" class="me-2">
+    LSD Detector AI
+</a>
+
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+
+<span class="navbar-toggler-icon"></span>
+
+</button>
+
+<div class="collapse navbar-collapse" id="menu">
+
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item">
+<a class="nav-link active" href="/">Home</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="/about">About</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="/detect">Detection</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#contact">Contact</a>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</nav>
+<div class="text-center bg-success text-white py-2">
+
+    <strong>
+        Early Detection • Healthier Cattle • Smarter Farming
+    </strong>
+
+</div>
+<!-- ================= HERO SECTION ================= -->
+<section class="hero py-5">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="col-lg-6">
+<span class="badge bg-success fs-6 mb-3">
+🚀 Version 1.0 • Official Release
+</span>
+                <h1 class="display-4 fw-bold">
+                    AI-Powered Lumpy Skin Disease Detection
+                </h1>
+
+                <p class="lead text-muted mt-3">
+                    Detect cattle diseases instantly using Deep Learning.
+                    Upload an image and receive an AI-assisted prediction
+                    within seconds.
+                </p>
+
+                <a href="/detect" class="btn btn-success btn-lg mt-3 me-3">
+                    Detect Now
+                </a>
+
+                <a href="#about" class="btn btn-outline-success btn-lg mt-3">
+                    Learn More
+                </a>
+
+            </div>
+
+            <div class="col-lg-6 text-center">
+
+                <img src="{{ url_for('static', filename='images/cow.jpg') }}"
+                     class="img-fluid hero-image">
+
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- ================= FEATURES ================= -->
+
+<section class="py-5 bg-light">
+
+<div class="container">
+
+<h2 class="text-center fw-bold mb-5">
+
+Why Choose Our System?
+
+</h2>
+
+<div class="row">
+
+<div class="col-md-4">
+
+<div class="card border-0 shadow p-4 text-center">
+
+<i class="bi bi-cpu-fill text-success display-4"></i>
+
+<h4 class="mt-3">
+
+AI Detection
+
+</h4>
+
+<p>
+
+Uses CNN Deep Learning Model for disease prediction.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card border-0 shadow p-4 text-center">
+
+<i class="bi bi-lightning-charge-fill text-warning display-4"></i>
+
+<h4 class="mt-3">
+
+Fast Prediction
+
+</h4>
+
+<p>
+
+Predicts disease within a few seconds.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card border-0 shadow p-4 text-center">
+
+<i class="bi bi-shield-check text-primary display-4"></i>
+
+<h4 class="mt-3">
+
+Reliable Results
+
+</h4>
+
+<p>
+
+High accuracy model trained using cattle images.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<section class="py-5 bg-light" id="how-it-works">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <h2 class="fw-bold text-success">How It Works</h2>
+            <p class="text-muted">
+                Get an AI-assisted diagnosis in just three simple steps.
+            </p>
+        </div>
+
+        <div class="row text-center">
+
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow p-4 h-100">
+                    <h1>📤</h1>
+                    <h4>Upload Image</h4>
+                    <p>Upload a clear image of the cattle's skin.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow p-4 h-100">
+                    <h1>🤖</h1>
+                    <h4>AI Analysis</h4>
+                    <p>Our deep learning model analyzes the image.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow p-4 h-100">
+                    <h1>📊</h1>
+                    <h4>Get Result</h4>
+                    <p>Receive prediction, confidence score and recommendations.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ================= STATISTICS ================= -->
+
+<section class="py-5 bg-success text-white">
+
+<div class="container">
+
+<div class="row text-center">
+
+<div class="col-md-3">
+<h2 class="fw-bold">5000+</h2>
+<p>Cattle Images</p>
+</div>
+
+<div class="col-md-3">
+<h2 class="fw-bold">99.7%</h2>
+<p>Model Accuracy</p>
+</div>
+<div class="col-md-3">
+<h2 class="fw-bold">&lt;2 Sec</h2>
+<p>Prediction Time</p>
+</div>
+
+<div class="col-md-3">
+<h2 class="fw-bold">CNN</h2>
+<p>Deep Learning</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+<section class="py-5 bg-light">
+
+<div class="container">
+
+<h2 class="text-center fw-bold mb-5">
+How It Works
+</h2>
+
+<div class="row text-center">
+
+<div class="col-md-4">
+
+<i class="bi bi-cloud-arrow-up-fill display-1 text-success"></i>
+
+<h4 class="mt-3">
+Upload Image
+</h4>
+
+<p>
+Upload a clear image of the cattle.
+</p>
+
+</div>
+
+<div class="col-md-4">
+
+<i class="bi bi-cpu-fill display-1 text-success"></i>
+
+<h4 class="mt-3">
+AI Analysis
+</h4>
+
+<p>
+Our CNN model analyzes the image instantly.
+</p>
+
+</div>
+
+<div class="col-md-4">
+
+<i class="bi bi-clipboard2-check-fill display-1 text-success"></i>
+
+<h4 class="mt-3">
+Get Results
+</h4>
+
+<p>
+Receive prediction, confidence score,
+and recommendations.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- ================= ABOUT ================= -->
+
+<section class="py-5">
+
+<div class="container">
+
+<div class="row">
+
+<div class="col-lg-6">
+
+<h2 class="fw-bold">About Our Project</h2>
+
+<p class="mt-3">
+
+Our AI-based Lumpy Skin Disease Detection System helps farmers and veterinarians identify
+Lumpy Skin Disease in cattle quickly using Deep Learning technology.
+
+</p>
+
+<p>
+
+The system analyzes uploaded cattle images and predicts whether the animal is Healthy or Infected.
+
+</p>
+
+</div>
+
+<div class="col-lg-6">
+
+<img src="{{ url_for('static', filename='images/hero-cow.png') }}" alt="LSD Detection" class="img-fluid hero-img">
+</div>
+
+</div>
+
+</div>
+
+</section>
+<section id="contact" class="container my-5">
+    <div class="card shadow p-4">
+        <h2 class="text-center text-success mb-4">Contact Us</h2>
+        
+        <!-- 👇 Indha place-la dhaan form paste pannanum -->
+
+        <form action="/contact" method="POST">
+
+            <div class="mb-3">
+                <label class="form-label">Full Name</label>
+                <input type="text" name="name" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Email Address</label>
+                <input type="email" name="email" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Message</label>
+                <textarea name="message" class="form-control" rows="5" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">
+                Send Message
+            </button>
+
+        </form>
+
+        <!-- 👆 Form mudiyum -->
+    </div>
+</section>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h5>AI Lumpy Skin Disease Detection</h5>
+                <p>
+                    If you have any questions, suggestions, or feedback,
+                    feel free to contact us.
+                </p>
+            </div>
+
+            <div class="col-md-6">
+                <p><strong>Name:</strong> Reema </p>
+                <p><strong>Email:</strong> reemaxxx0509@gmail.com</p>
+                <p><strong>Phone:</strong> +91 9894766173</p>
+                <p><strong>Location:</strong> Madurai, Tamil Nadu, India</p>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+const counters = document.querySelectorAll("h2.fw-bold");
+
+counters.forEach(counter => {
+    const target = counter.innerText;
+
+    if (!target.includes("+") && !target.includes("%") && !target.includes("Sec") && target !== "CNN") {
+        return;
+    }
+
+    counter.style.transition = "0.4s";
+});
+</script>
+<<footer class="bg-dark text-white pt-5 pb-3">
+
+<div class="container">
+
+<div class="row">
+
+<div class="col-md-4">
+
+<h4>🐄 LSD Detector AI</h4>
+
+<p>
+AI-powered cattle disease detection platform built using
+Flask and Deep Learning.
+</p>
+
+</div>
+
+<div class="col-md-4">
+
+<h5>Quick Links</h5>
+
+<ul class="list-unstyled">
+
+<li><a href="/" class="text-white text-decoration-none">Home</a></li>
+
+<li><a href="/about" class="text-white text-decoration-none">About</a></li>
+
+<li><a href="/detect" class="text-white text-decoration-none">Detection</a></li>
+
+</ul>
+
+</div>
+<footer class="bg-dark text-white pt-5 pb-3">
+
+<div class="container">
+
+<div class="row">
+
+<div class="col-md-4">
+
+<h4>🐄 LSD Detector AI</h4>
+
+<p>
+AI-powered cattle disease detection platform built using
+Flask and Deep Learning.
+</p>
+
+</div>
+
+<div class="col-md-4">
+
+<h5>Quick Links</h5>
+
+<ul class="list-unstyled">
+
+<li><a href="/" class="text-white text-decoration-none">Home</a></li>
+
+<li><a href="/about" class="text-white text-decoration-none">About</a></li>
+
+<li><a href="/detect" class="text-white text-decoration-none">Detection</a></li>
+
+</ul>
+
+</div>
+
+<footer class="bg-dark text-white pt-5 pb-3">
+
+<div class="container">
+
+<div class="row">
+
+<div class="col-md-4">
+<h4>🐄 LSD Detector AI</h4>
+
+<p>
+Empowering farmers with AI-driven Lumpy Skin Disease detection for faster diagnosis and healthier livestock.
+</p>
+</div>
+
+<div class="col-md-4">
+
+<h5>Quick Links</h5>
+
+<ul class="list-unstyled">
+<li><a href="/" class="text-white text-decoration-none">Home</a></li>
+<li><a href="/about" class="text-white text-decoration-none">About</a></li>
+<li><a href="/detect" class="text-white text-decoration-none">Detection</a></li>
+</ul>
+
+</div>
+
+<div class="col-md-4">
+
+<h5>Contact</h5>
+
+<p>📍 Madurai, Tamil Nadu</p>
+
+<p>📧 📧 support@lsddetectorai.com</p>
+
+<p>📱 📱 Coming Soon</p>
+
+</div>
+
+</div>
+
+<hr>
+
+<p class="text-center mb-0">
+    © 2026 <strong>LSD Detector AI v1.0</strong><br>
+    AI-Powered Lumpy Skin Disease Detection Platform<br>
+    Developed by <strong>team Reema</strong>
+</p>
+
+</div>
+
+</footer>
+
+<script ...></script>
+
+</body>
+</html>

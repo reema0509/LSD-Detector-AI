@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Disease Detection</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<style>
+
+body{
+
+background:#f5f7fa;
+
+font-family:Arial,Helvetica,sans-serif;
+
+}
+
+.navbar{
+
+background:#2E7D32;
+
+}
+
+.detect-section{
+
+padding:80px 0;
+
+}
+
+.upload-card{
+
+background:white;
+
+padding:35px;
+
+border-radius:20px;
+
+box-shadow:0 15px 35px rgba(0,0,0,.12);
+
+}
+
+.upload-box{
+
+border:3px dashed #2E7D32;
+
+border-radius:20px;
+
+padding:40px;
+
+cursor:pointer;
+
+transition:.4s;
+
+}
+
+.upload-box:hover{
+
+background:#f1fff2;
+
+}
+
+#preview{
+
+display:none;
+
+width:100%;
+
+margin-top:20px;
+
+border-radius:15px;
+
+}
+
+.form-select{
+
+height:50px;
+
+}
+
+.detect-btn{
+
+width:100%;
+
+padding:15px;
+
+font-size:20px;
+
+font-weight:bold;
+
+border-radius:50px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-dark">
+
+<div class="container">
+
+<a class="navbar-brand fw-bold fs-3" href="/">
+
+🐄 LSD Detector AI
+
+</a>
+
+</div>
+
+</nav>
+
+<section class="detect-section">
+
+<div class="container">
+
+<div class="row justify-content-center">
+
+<div class="col-lg-8">
+
+<div class="upload-card">
+
+<h2 class="text-center text-success fw-bold">
+
+🤖 AI Disease Detection
+
+</h2>
+
+<p class="text-center text-muted">
+
+Upload a cattle image and provide the symptoms for AI analysis.
+
+</p>
+
+<form action="/predict" method="POST" enctype="multipart/form-data">
+
+<label class="upload-box w-100 text-center">
+
+<i class="bi bi-cloud-arrow-up-fill display-1 text-success"></i>
+
+<h4 class="mt-3">
+
+Upload Cow Image
+
+</h4>
+
+<p>
+
+Click here to browse an image
+
+</p>
+
+<input
+
+type="file"
+
+name="image"
+
+accept="image/*"
+
+required
+
+hidden
+
+onchange="previewImage(event)">
+
+</label>
+
+<img id="preview">
+
+<br><br>
+<h4 class="text-success mb-4">
+
+Symptoms Information
+
+</h4>
+
+<div class="mb-3">
+
+<label class="form-label fw-bold">
+
+🌡 Fever Duration
+
+</label>
+
+<select name="fever_days" class="form-select">
+
+<option>1-2 Days</option>
+
+<option>3-5 Days</option>
+
+<option>More than 5 Days</option>
+
+<option>No Fever</option>
+
+</select>
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label fw-bold">
+
+🔴 Skin Nodules Present?
+
+</label>
+
+<select name="skin_nodules" class="form-select">
+
+<option>Yes</option>
+
+<option>No</option>
+
+</select>
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label fw-bold">
+
+🟣 Swollen Lymph Nodes?
+
+</label>
+
+<select name="lymph_nodes" class="form-select">
+
+<option>Yes</option>
+
+<option>No</option>
+
+</select>
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label fw-bold">
+
+🍽 Loss of Appetite?
+
+</label>
+
+<select name="appetite" class="form-select">
+
+<option>Yes</option>
+
+<option>No</option>
+
+</select>
+
+</div>
+
+<div class="mb-4">
+
+<label class="form-label fw-bold">
+
+🚶 Difficulty Walking?
+
+</label>
+
+<select name="walking" class="form-select">
+
+<option>Yes</option>
+
+<option>No</option>
+
+</select>
+
+</div>
+
+<button
+type="submit"
+class="btn btn-success detect-btn"
+id="predictBtn">
+
+<i class="bi bi-cpu-fill"></i>
+
+<span id="btnText">
+Analyze with AI
+</span>
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<script>
+
+function previewImage(event){
+    <script>
+
+<script>
+
+function previewImage(event){
+
+    const preview = document.getElementById("preview");
+
+    preview.src = URL.createObjectURL(event.target.files[0]);
+
+    preview.style.display = "block";
+
+}
+
+document.querySelector("form").addEventListener("submit", function(){
+
+    document.getElementById("btnText").innerHTML =
+    '<span class="spinner-border spinner-border-sm me-2"></span> AI is analyzing...';
+
+    document.getElementById("predictBtn").disabled = true;
+
+});
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
