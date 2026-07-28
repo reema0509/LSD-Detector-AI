@@ -10,7 +10,13 @@ from flask import Flask, render_template, request, redirect, url_for, send_from_
 app = Flask(__name__)
 
 # Load trained model
-model = tf.keras.models.load_model("lsd_model.keras")
+model = None
+
+def get_model():
+    global model
+    if model is None:
+        model = tf.keras.models.load_model("lsd_model.keras")
+    return model
 
 # Upload folder
 UPLOAD_FOLDER = "uploads"
@@ -80,6 +86,7 @@ def predict():
     img_array = img_array / 255.0
 
     # Prediction
+    model = get_model()
     prediction = model.predict(img_array)
 
     probability = float(prediction[0][0])
