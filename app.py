@@ -87,6 +87,7 @@ def predict():
     lymph_nodes = request.form["lymph_nodes"]
     appetite = request.form["appetite"]
     walking = request.form["walking"]
+
     # Preprocess image
     img = image.load_img(filepath, target_size=(224, 224))
     img_array = image.img_to_array(img)
@@ -94,21 +95,20 @@ def predict():
     img_array = img_array / 255.0
 
     # Temporary test
-result = "Test Successful"
-confidence = 100
+    result = "Test Successful"
+    confidence = 100
 
-return render_template(
-    "result.html",
-    result=result,
-    confidence=confidence,
-    image=filename,
-    fever_days=fever_days,
-    skin_nodules=skin_nodules,
-    lymph_nodes=lymph_nodes,
-    appetite=appetite,
-    walking=walking
-)
-
+    return render_template(
+        "result.html",
+        result=result,
+        confidence=confidence,
+        image=filename,
+        fever_days=fever_days,
+        skin_nodules=skin_nodules,
+        lymph_nodes=lymph_nodes,
+        appetite=appetite,
+        walking=walking
+    )
 
 
 if __name__ == "__main__":
