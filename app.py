@@ -33,7 +33,11 @@ app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 # Create uploads folder if it doesn't exist
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
-    
+    from flask import send_from_directory
+
+@app.route("/sitemap.xml")
+def sitemap():
+    return send_from_directory("static", "sitemap.xml")
 
 @app.route("/")
 def home():
@@ -94,9 +98,17 @@ def predict():
     img_array = np.expand_dims(img_array, axis=0)
     img_array = img_array / 255.0
 
-    # Temporary test
-    result = "Test Successful"
-    confidence = 100
+    # AI Model Prediction
+    prediction = model.predict(img_array)[0][0]
+
+    # Healthy = 0
+    # Infected = 1
+    if prediction >= 0.5:
+        result = "Infected"
+        confidence = round(float(prediction) * 100, 2)
+    else:
+        result = "Healthy"
+        confidence = round(float(1 - prediction) * 100, 2)
 
     return render_template(
         "result.html",
@@ -109,11 +121,7 @@ def predict():
         appetite=appetite,
         walking=walking
     )
-from flask import send_from_directory
 
-@app.route("/sitemap.xml")
-def sitemap():
-    return send_from_directory("static", "sitemap.xml")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
