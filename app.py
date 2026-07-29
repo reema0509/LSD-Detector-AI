@@ -10,7 +10,7 @@ from flask import Flask, render_template, request, redirect, url_for, send_from_
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = "static/uploads"
 # Load trained model
-model = None
+
 
 import os
 from pathlib import Path
@@ -92,14 +92,16 @@ def predict():
     appetite = request.form["appetite"]
     walking = request.form["walking"]
 
-    # Preprocess image
+        # Preprocess image
     img = image.load_img(filepath, target_size=(224, 224))
     img_array = image.img_to_array(img)
     img_array = np.expand_dims(img_array, axis=0)
     img_array = img_array / 255.0
 
     # AI Model Prediction
-    prediction = model.predict(img_array)[0][0]
+    loaded_model = get_model()
+
+    prediction = loaded_model.predict(img_array)[0][0]
 
     # Healthy = 0
     # Infected = 1
